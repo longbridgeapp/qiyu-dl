@@ -27,7 +27,7 @@ setx QIYU_APP_SECRET "七鱼 APP SECRET"
 setx QIYU_HOST "七鱼 API 域名"
 ```
 
-_使用_
+_使用 qiyu-dl 下载某天信息_
 ```
 qiyu-dl -date 2023-06-19
 
