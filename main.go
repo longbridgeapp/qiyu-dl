@@ -102,15 +102,15 @@ func main() {
 		time.Sleep(2 * time.Second)
 		checkRes, err := util.PostQiyu(fmt.Sprintf(checkUrl, host), checkData, appKey, appSecret)
 		if err != nil {
-			fmt.Println("访问校验接口失败:", err)
+			fmt.Println("访问导出校验接口失败:", err)
 			os.Exit(1)
 		}
 
-		// 如果错误码为14403，说明文件还在导出种，继续等待
+		// 如果错误码为14403，说明文件还在导出中，继续等待
 		if checkRes.Code == 14403 {
+			fmt.Println("文件导出中, 请稍等")
 			continue
-		}
-		if checkRes.Code == 200 {
+		} else if checkRes.Code == 200 {
 			err = util.DownloadFile(checkRes.Message, *output)
 			if err != nil {
 				fmt.Println("文件下载失败, err:", err)
@@ -118,6 +118,9 @@ func main() {
 			}
 			fmt.Printf("Download completed on %s\n", *output)
 			break
+		} else {
+			fmt.Println("七鱼导出校验接口返回业务错误:", checkRes)
+			os.Exit(1)
 		}
 	}
 
