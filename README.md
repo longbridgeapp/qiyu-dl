@@ -11,7 +11,7 @@ _2. 下载 qiyu-dl_
 go install github.com/longbridgeapp/qiyu-dl@latest
 ```
 
-_3. 设置环境变量
+_3. 设置环境变量_
 
 ```bash
 ## MacOS/LINUX
