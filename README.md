@@ -1,5 +1,5 @@
 # qiyu-dl
-qiyu downloader, 七鱼会话信息下载器
+qiyu session message downloader, 七鱼会话信息下载器
 
 ## Quickstart
 
