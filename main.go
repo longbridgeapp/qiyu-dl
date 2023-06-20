@@ -11,6 +11,7 @@ import (
 	"github.com/longbridgeapp/qiyu-dl/util"
 )
 
+var qiyuUrl = "servehub.aiconn.com"
 var exportUrl = "https://%s/openapi/export/session"
 var checkUrl = "https://%s/openapi/export/session/check"
 
@@ -47,9 +48,9 @@ func main() {
 	}
 
 	host := os.Getenv("QIYU_HOST")
+	// 如果 QIYU_HOST 是空的，使用默认的 host
 	if host == "" {
-		fmt.Println("环境变量 QIYU_HOST 是空的")
-		os.Exit(1)
+		host = qiyuUrl
 	}
 
 	var dir string
